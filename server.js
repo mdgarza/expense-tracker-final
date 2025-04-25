@@ -5,16 +5,19 @@ require('dotenv').config();
 
 const routes = require('./routes');
 const sequelize = require('./config/connection');
+
 const { User, Transaction, Category } = require('./models');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-
 const sess = {
   secret: 'Super secret secret',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 60 * 60 * 1000,
+  }
 };
 app.use(session(sess));
 
@@ -38,6 +41,6 @@ sequelize.authenticate()
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
   });
 });

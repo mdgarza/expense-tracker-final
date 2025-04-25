@@ -1,0 +1,45 @@
+<h1>Your Dashboard</h1>
+
+<a href="/new-transaction"><button>Add New Transaction</button></a>
+
+{{#if transactions.length}}
+  <ul>
+    {{#each transactions}}
+      <li data-id="{{id}}">
+        <strong>{{description}}</strong> - ${{amount}} on {{date}} 
+        (Category: {{category.name}}, Type: {{type}})
+        <button class="edit-btn">Edit</button>
+        <button class="delete-btn">Delete</button>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No transactions found.</p>
+{{/if}}
+
+<h2>Your Categories</h2>
+
+{{#if categories.length}}
+  <ul>
+    {{#each categories}}
+      <li data-id="{{id}}">
+        <strong>{{name}}</strong>
+        <button class="edit-category-btn">Edit</button>
+        <button class="delete-category-btn">Delete</button>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No categories found.</p>
+{{/if}}
+
+<h3>Add New Category</h3>
+<form id="category-form">
+  <label for="category-name">Name:</label>
+  <input type="text" id="category-name" name="name" required>
+  <button type="submit">Add Category</button>
+</form>
+
+
+
+<script src="/js/dashboard.js"></script>
