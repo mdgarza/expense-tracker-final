@@ -32,5 +32,3 @@ All session-related pages (dashboard, new transaction, etc.) are protected by au
 Thank you for reviewing my work!
 
 You can copy-paste that exactly (just double-check that your GitHub URL and live URL are correct — but they should be!).
-
-Would you also like me to give you a quick optional bonus version that sounds a little more "casual but professional" depending on your professor’s tone? 🎯 (sometimes it's nice to match their style)
