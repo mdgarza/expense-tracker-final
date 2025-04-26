@@ -2,6 +2,15 @@ const router = require('express').Router();
 const { Transaction, Category } = require('../models');
 const withAuth = require('../utils/withAuth');
 
+// === HOMEPAGE ROUTE ===
+router.get('/', (req, res) => {
+  // Optional: redirect to dashboard if already logged in
+  if (req.session.logged_in) {
+    return res.redirect('/dashboard');
+  }
+  res.render('home');
+});
+
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const transactionData = await Transaction.findAll({
@@ -25,7 +34,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
@@ -61,6 +69,5 @@ router.get('/signup', (req, res) => {
   }
   res.render('signup');
 });
-
 
 module.exports = router;
